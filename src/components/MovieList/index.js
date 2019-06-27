@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import request from 'superagent'
+import MoviesListTable from './MoviesListTable';
 
 export default function MovieList (props) {
   const [movieList, setMovieList] = useState([])
@@ -17,6 +18,7 @@ export default function MovieList (props) {
           <h3 key={movie.id}>{movie.title}</h3>
         )
       })}
+      <MoviesListTable />
     </div>
   )
 }
