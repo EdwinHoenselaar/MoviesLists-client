@@ -48,7 +48,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MoviesListTable() {
+export default function MoviesListTable(props) {
+  const { movieList } = props
+  console.log('movielist in table component',movieList)
   const classes = useStyles();
 
   return (
@@ -63,14 +65,14 @@ export default function MoviesListTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <StyledTableRow key={row.name}>
+          {movieList.map(movie => (
+            <StyledTableRow key={movie.title}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {movie.title}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.calories}</StyledTableCell>
-              <StyledTableCell align="right">{row.fat}</StyledTableCell>
-              <StyledTableCell align="right">{row.carbs}</StyledTableCell>
+              <StyledTableCell align="right">{movie.year}</StyledTableCell>
+              <StyledTableCell align="right">{movie.runtime}</StyledTableCell>
+              <StyledTableCell align="right">{movie.grade}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

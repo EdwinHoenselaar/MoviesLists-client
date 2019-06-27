@@ -9,16 +9,11 @@ export default function MovieList (props) {
     request
       .get('http://localhost:5000/api/movies')
       .then(res => setMovieList(res.body))
-  }, [movieList])
+  }, [])
 
   return (
     <div>
-      {movieList.map(movie => {
-        return (
-          <h3 key={movie.id}>{movie.title}</h3>
-        )
-      })}
-      <MoviesListTable />
+      <MoviesListTable movieList={movieList}/>
     </div>
   )
 }
