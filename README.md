@@ -1,3 +1,25 @@
+# Movies List Client
+
+This project started as a way to practice my skills and to learn mongoDB. Because of the recent changes in React i added a new learning goal to this project. I will work with the new hooks in react. This app will be made using only functional components.
+
+The goal is to make an app where i can keep track of the movies i own on DVD and Blu-ray (i have a lot of hardcopies).
+
+I will be using the MERN stack for this project:
+MongoDB (with mongoose as ORM)
+Express
+React (with redux)
+Node.js
+
+Steps:
+1. Show a list of movies
+2. Make a nav bar
+3. Show movie details
+4. Make a form to add new movies to the list
+5. Add an edit function to the moviedetails page
+6. Add validation to the forms
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
