@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import request from 'superagent'
 import MoviesListTable from './MoviesListTable';
 
-export default function MovieList (props) {
+export default function MovieList () {
   const [movieList, setMovieList] = useState([])
 
   useEffect(() => {
