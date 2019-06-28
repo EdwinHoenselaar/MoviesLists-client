@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -7,7 +7,8 @@ import InputBase from '@material-ui/core/InputBase'
 import { fade, makeStyles } from '@material-ui/core/styles'
 import MenuIcon from '@material-ui/icons/Menu'
 import SearchIcon from '@material-ui/icons/Search'
-import { Link } from 'react-router-dom'
+import Icon from '@material-ui/core/Icon';
+import { Link, Redirect } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,13 +61,26 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
+  iconHover: {
+    margin: theme.spacing(2)
+  },
 }));
 
-export default function SearchAppBar() {
-  const classes = useStyles();
+export default function SearchAppBar(props) {
+  const classes = useStyles()
 
+  const [newMoviePage, setNewMoviePage] = useState(false)
+
+  const redirect =
+    newMoviePage &&
+    <Redirect to={`/new`} />
+
+  function onClick () {
+    setNewMoviePage(!newMoviePage)
+  }
   return (
     <div className={classes.root}>
+      {redirect}
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -80,6 +94,7 @@ export default function SearchAppBar() {
           <Typography className={classes.title} variant="h6" noWrap>
             <Link to={`/`}>Movies List</Link>
           </Typography>
+          <Icon className={classes.iconHover} onClick={onClick} style={{ fontSize: 30 }}>+</Icon>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
