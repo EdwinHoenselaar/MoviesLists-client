@@ -57,9 +57,11 @@ export default function MoviesListTable(props) {
         <TableBody>
           {movieList.map(movie => (
             <StyledTableRow key={movie.title}>
-              <StyledTableCell component="th" scope="row"><Link to={`/movieDetails/${movie._id}`}>
-                {movie.title}
-              </Link></StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                <Link to={`/movieDetails/${movie._id}`}>
+                  {movie.title}
+                </Link>
+              </StyledTableCell>
               <StyledTableCell align="right">{movie.year}</StyledTableCell>
               <StyledTableCell align="right">{movie.runtime}</StyledTableCell>
               <StyledTableCell align="right">{movie.grade}</StyledTableCell>

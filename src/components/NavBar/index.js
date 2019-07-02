@@ -95,7 +95,8 @@ export default function SearchAppBar(props) {
             <Link to={`/`}>Movies List</Link>
           </Typography>
           <Icon className={classes.iconHover} onClick={onClick} style={{ fontSize: 30 }}>+</Icon>
-          <div className={classes.search}>
+{/* for future implementation: a search bar */}
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -107,7 +108,7 @@ export default function SearchAppBar(props) {
               }}
               inputProps={{ 'aria-label': 'Search' }}
             />
-          </div>
+          </div> */}
         </Toolbar>
       </AppBar>
     </div>

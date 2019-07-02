@@ -2,3 +2,9 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 50vw;
+}
