@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow'
 import { Paper, Modal, Typography, Button } from '@material-ui/core'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { deleteMovie } from '../../actions/movie'
 
 // styling of the material ui components
 const StyledTableCell = withStyles(theme => ({
@@ -69,16 +71,22 @@ export default function MoviesListTable(props) {
   const [movie, setMovie] = useState({})
   const [open, setOpen] = useState(false)
   const [modalStyle] = useState(getModalStyle)
+  const { movieList } = props
+  const classes = useStyles()
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     setOpen(false)
   }
-  const { movieList } = props
-  console.log(movieList)
-  const classes = useStyles()
+
+  const deleteMovieWithId = (movieId) => {
+    console.log('controle deleteMovie')
+    const thunk = deleteMovie(movieId);
+    dispatch(thunk);
+    handleClose();
+  }
 
   function onDeleteClick (movie) {
-    console.log("DELETE", movie)
     setMovie(movie)
     setOpen(true)
   }
@@ -125,8 +133,13 @@ export default function MoviesListTable(props) {
           <Typography variant="h6">
             Weet je zeker dat je deze film permanent wilt verwijderen?
           </Typography>
-          <Button variant="contained" color="secondary" className={classes.button}>YES</Button>
-          <Button variant="contained" color="primary" className={classes.button} onClick={handleClose}>NO</Button>
+          <Button 
+            variant="contained" 
+            color="secondary" 
+            className={classes.button}
+            onClick={() => deleteMovieWithId(movie._id)}
+          >JA</Button>
+          <Button variant="contained" color="primary" className={classes.button} onClick={handleClose}>NEE</Button>
         </div>
       </Modal>
 
