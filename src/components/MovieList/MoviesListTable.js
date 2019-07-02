@@ -63,6 +63,8 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
+// function returning the table with a list of movies
+// there is also a modal to verify if a movie should be deleted
 export default function MoviesListTable(props) {
   const [movie, setMovie] = useState({})
   const [open, setOpen] = useState(false)
@@ -109,7 +111,7 @@ export default function MoviesListTable(props) {
           ))}
         </TableBody>
       </Table>
-
+{/* modal to verify before deleting */}
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"

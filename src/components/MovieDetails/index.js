@@ -3,12 +3,13 @@ import request from 'superagent'
 
 export default function MovieDetails(props) {
   const [movieDetails, setMovieDetails] = useState('Loading...')
-  
+  const id = props.match.params.id;
+
   useEffect(() => {
     request
-      .get(`http://localhost:5000/api/movies/${props.match.params.id}`)
+      .get(`http://localhost:5000/api/movies/${id}`)
       .then(res => setMovieDetails(res.body))
-  }, [])
+  }, [id])
 
   return (
     <div>

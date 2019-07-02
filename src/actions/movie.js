@@ -11,6 +11,15 @@ const setMovies = movies => ({
 export const getMovies = () => (dispatch) => {
   request
     .get(`${baseUrl}movies`)
-    .next(res => dispatch(setMovies(res.body)))
+    .then(res => {
+      dispatch(setMovies(res.body))
+    })
+    .catch(err => console.error(err))
+}
+
+export const deleteMovie = (movieId) => (dispatch) => {
+  request
+    .delete(`${baseUrl}movies/${movieId}`)
+    .then(res => console.log(res))
     .catch(err => console.error(err))
 }

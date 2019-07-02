@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from 'react'
-import request from 'superagent'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import MoviesListTable from './MoviesListTable'
 import { getMovies } from '../../actions/movie'
 
 export default function MovieList () {
-  // const [movieList, setMovieList] = useState([])
+  const movies = useSelector(state => state.movies);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getMovies()
-  }, [])
+    const thunk = getMovies();
+    dispatch(thunk);
+  }, [dispatch])
 
-  // useEffect(() => {
-  //   request
-  //     .get('http://localhost:5000/api/movies')
-  //     .then(res => setMovieList(res.body))
-  // }, [])
-
+  const moviesListTable = 
+    movies && 
+    <MoviesListTable movieList={movies}/>
+    
   return (
     <div>
-      <MoviesListTable/>
+      {moviesListTable}
     </div>
   )
 }
