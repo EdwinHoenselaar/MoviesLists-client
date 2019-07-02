@@ -9,7 +9,7 @@ import { Paper, Modal, Typography, Button } from '@material-ui/core'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever'
 import { Link } from 'react-router-dom'
 
-
+// styling of the material ui components
 const StyledTableCell = withStyles(theme => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -28,13 +28,9 @@ const StyledTableRow = withStyles(theme => ({
   },
 }))(TableRow)
 
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
 function getModalStyle() {
-  const top = 50 + rand()
-  const left = 50 + rand()
+  const top = 50
+  const left = 50
 
   return {
     top: `${top}%`,
