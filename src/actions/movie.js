@@ -32,3 +32,11 @@ export const deleteMovie = (movieId) => (dispatch) => {
     })
     .catch(err => console.error(err))
 }
+
+export const createMovie = (movie) => (dispatch) => {
+  request
+    .post(`${baseUrl}movies`)
+    .send(movie)
+    .then(res => console.log('response post movie: ',res))
+    .catch(err => console.error(err))
+}

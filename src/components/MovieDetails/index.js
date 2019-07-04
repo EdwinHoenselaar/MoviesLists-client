@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import request from 'superagent'
+import { Typography, Card, CardContent } from '@material-ui/core';
 
 export default function MovieDetails(props) {
   const [movieDetails, setMovieDetails] = useState('Loading...')
@@ -12,11 +13,13 @@ export default function MovieDetails(props) {
   }, [id])
 
   return (
-    <div>
-      <h1>{movieDetails.title}</h1>
-      <p>{'Uitgekomen in: '+movieDetails.year}</p>
-      <p>{'Speelduur: '+movieDetails.runtime}</p>
-      <p>{'Cijfer: '+movieDetails.grade}</p>
-    </div>
+    <Card>
+      <CardContent>
+        <Typography variant="h1">{movieDetails.title}</Typography>
+        <Typography variant="h4">{'Uitgekomen in: '+movieDetails.year}</Typography>
+        <Typography variant="h4">{'Speelduur: '+movieDetails.runtime}</Typography>
+        <Typography variant="h4">{'Cijfer: '+movieDetails.grade}</Typography>
+      </CardContent>
+    </Card>
   )
 }

@@ -4,11 +4,11 @@ import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Route } from 'react-router-dom'
 import MovieDetails from './components/MovieDetails'
 import MovieList from './components/MovieList'
-import MovieForm from './components/MovieForm'
 import { Provider } from 'react-redux'
 import store from './store'
 import './App.css'
 import NavBar from './components/NavBar'
+import NewMovieInput from './components/NewMovieInput';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -16,7 +16,7 @@ ReactDOM.render(
       <NavBar />
       <Route exact path={`/`} component={MovieList} />
       <Route exact path={`/movieDetails/:id`} component={MovieDetails} />
-      <Route exact path={`/new`} component={MovieForm} />
+      <Route exact path={`/new`} component={NewMovieInput} />
     </Provider>
   </BrowserRouter>
   , document.getElementById('root'))
